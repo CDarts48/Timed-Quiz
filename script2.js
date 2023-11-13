@@ -15,17 +15,17 @@ var quiz = document.getElementById("quiz");
 var currentQuestion = 0;
 var totalQuestions = 2;
 var highScoresarray = JSON.parse(localStorage.getItem("highScores")) || [];
-var highScoresList = document.getElementById('highScoresarray');
+var highScoresList = document.getElementById("highScoresarray");
 start.addEventListener("click", function () {
   start.style.display = "none";
   // quiz.style.display = 'block';
   quiz.removeAttribute("class");
-var interval = setInterval(function () {
-  document.getElementById("count").innerHTML = count;
-  if (currentQuestionIndex === totalQuestions || count <= 0) {
-    clearInterval(interval);
-    document.getElementById("count").textContent = "Time's up!";
-    showScore();
+  var interval = setInterval(function () {
+    document.getElementById("count").innerHTML = count;
+    if (currentQuestionIndex === totalQuestions || count <= 0) {
+      clearInterval(interval);
+      document.getElementById("count").textContent = "Time's up!";
+      showScore();
     } else {
       document.getElementById("count").textContent =
         count + " seconds remaining";
@@ -61,7 +61,6 @@ const questions = [
   },
 ];
 
-
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -73,7 +72,7 @@ function startQuiz() {
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
-//   let questionNo = currentQuestionIndex + 1;
+  //   let questionNo = currentQuestionIndex + 1;
   questionElement.innerHTML = currentQuestion.question;
 
   currentQuestion.answers.forEach((answer) => {
@@ -135,26 +134,25 @@ function showScore() {
       displayScore();
       highScoresarray.push(scoreObject);
       localStorage.setItem("highScores", JSON.stringify(highScoresarray));
-      window.location.href = "score.html"
+      window.location.href = "score.html";
     });
 
-    highScore.forEach(function(scoreObject) {
-    var listItem = document.createElement('li');
-    listItem.textContent = scoreObject.initials + ': ' + scoreObject.score;
+  highScore.forEach(function (scoreObject) {
+    var listItem = document.createElement("li");
+    listItem.textContent = scoreObject.initials + ": " + scoreObject.score;
     highScoresarray.appendChild(listItem);
   });
-};
+}
 
-var tryAgainButton = document.getElementById('restart');
-tryAgainButton.addEventListener('click', function() {
-  window.location.href = 'index.html';
+var tryAgainButton = document.getElementById("restart");
+tryAgainButton.addEventListener("click", function () {
+  window.location.href = "index.html";
 });
 
 //   questionElement.appendChild(scoreButton);
 
 //   nextButton.innerHTML = "Play Again";
 //   nextButton.style.display = "block";
-
 
 function saveScore() {
   localStorage.setItem("score");
@@ -168,18 +166,17 @@ function handleNextButton() {
   }
 }
 
-function showScore () {}
+function displayScore() {}
 
-window.onload = function(showScore) {
-  var highScoresList = document.getElementById('scoreList');
-  var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+window.onload = function () {
+  var highScoresList = document.getElementById("scoreList");
+  var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   highScores.sort((a, b) => b.score - a.score);
   highScores = highScores.slice(0, 5);
 
-  highScores.forEach(function(scoreObject) {
-    var listItem = document.createElement('li');
-    listItem.textContent = scoreObject.initials + ': ' + scoreObject.score;
-    highScoresList.appendChild(listItem);
+  highScores.forEach(function (scoreObject) {
+    var listItem = document.createElement("li");
+    listItem.textContent = scoreObject.initials + ": " + scoreObject.score;
   });
 };
 
