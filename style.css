@@ -4,25 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: purple;
-  width: 99%;
-}
-
-#startButton {
-  background-color: green;
-  color: black;
-  font-weight: 500;
-  height: fit-content;
-  width: 25%;
-  padding: 1%;
-  cursor: pointer;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-
 .banner {
   background-color: white;
   margin: 3% auto;
@@ -36,16 +17,45 @@ h1 {
   color: green;
 }
 
-.quiz {
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: purple;
+  width: 99%;
+}
+
+#count {
+        display: flex;
+    width: fit-content;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: white;
+    margin: auto;
+}
+
+#start {
+  background-color: green;
+  color: black;
+  font-weight: 500;
+  height: fit-content;
+  width: 25%;
+  padding: 1%;
+  cursor: pointer;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+#quiz {
   margin: 2% auto;
   width: 80%;
   padding: 2%;
   border-radius: 10px;
   background-color: #f2f2f2;
-  display: none;
+  /* display: none; */
 }
 
-.quiz h2 {
+#quiz h2 {
   text-align: center;
   font-size: 2rem;
 }
@@ -55,6 +65,23 @@ h1 {
   flex-direction: column;
   justify-content: left;
   align-items: flex-start;
+}
+
+#end-screen {  margin: 2% auto;
+  width: 80%;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  /* display: none; */
+}
+
+#highScores {
+  margin: 2% auto;
+  width: 80%;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  text-align: center;
 }
 
 .btn {
@@ -86,6 +113,7 @@ h1 {
   color: white;
 }
 
+
 .correct {
   background-color: green;
   color: white;
@@ -95,3 +123,5 @@ h1 {
   background-color: red;
   color: black;
 }
+
+.hide {display: none;}
