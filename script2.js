@@ -1,4 +1,4 @@
-const startButton = document.getElementById("startButton");
+const startButton = document.getElementById("start");
 // startButton.addEventListener("click", startQuiz);
 var count = 60;
 var interval;
