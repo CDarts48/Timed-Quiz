@@ -129,13 +129,13 @@ function showScore() {
       console.log(timeLeft);
       var initials = document.getElementById("initials").value;
       var scoreObject = {
-        score: score * count,
         initials,
+        score: score * count,
       };
       console.log(scoreObject);
       displayScore();
       scoreList.push(scoreObject);
-      localStorage.setItem("highScores", JSON.stringify(highScoresarray));
+      localStorage.setItem("highScores", JSON.stringify(scoreObject));
       window.location.href = "score.html";
     });
 
