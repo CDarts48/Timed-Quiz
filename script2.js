@@ -7,17 +7,18 @@ const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next");
 let currentQuestionIndex = 5;
 let isCorrect = 0;
-// let score = isCorrect + count;
+let score = isCorrect + count;
 console.log(isCorrect);
-console.log(start, startQuiz, count);
-var start = document.getElementById("start");
+console.log(begin, startQuiz, count);
+var begin = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var currentQuestion = 0;
 var totalQuestions = 2;
-var highScoresarray = JSON.parse(localStorage.getItem("highScores")) || [];
-var highScoresList = document.getElementById("highScoresarray");
-start.addEventListener("click", function () {
-  start.style.display = "none";
+var highScoresList = JSON.parse(localStorage.getItem("highScore")) || [];
+var highScoresarray = document.getElementById("highScores");
+// var highScores = ('score');
+begin.addEventListener("click", function () {
+  begin.style.display = "none";
   // quiz.style.display = 'block';
   quiz.removeAttribute("class");
   var interval = setInterval(function () {
@@ -124,6 +125,7 @@ function showScore() {
     .getElementById("score-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+      var scoreList = [];
       console.log(timeLeft);
       var initials = document.getElementById("initials").value;
       var scoreObject = {
@@ -132,20 +134,20 @@ function showScore() {
       };
       console.log(scoreObject);
       displayScore();
-      highScoresarray.push(scoreObject);
+      scoreList.push(scoreObject);
       localStorage.setItem("highScores", JSON.stringify(highScoresarray));
       window.location.href = "score.html";
     });
 
-  highScore.forEach(function (scoreObject) {
+  // var (highScore = "score")
+  highScoresList.forEach(function (scoreObject) {
     var listItem = document.createElement("li");
-    listItem.textContent = scoreObject.initials + ": " + scoreObject.score;
-    highScoresarray.appendChild(listItem);
+    highScoresList.push(scoreObject);
   });
 }
 
-var tryAgainButton = document.getElementById("restart");
-tryAgainButton.addEventListener("click", function () {
+var restartButton = document.getElementById("restart");
+restartButton.addEventListener("click", function () {
   window.location.href = "index.html";
 });
 
@@ -169,7 +171,7 @@ function handleNextButton() {
 function displayScore() {}
 
 window.onload = function () {
-  var highScoresList = document.getElementById("scoreList");
+  var highScoresList = document.getElementById("highScoresList");
   var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   highScores.sort((a, b) => b.score - a.score);
   highScores = highScores.slice(0, 5);
@@ -177,6 +179,11 @@ window.onload = function () {
   highScores.forEach(function (scoreObject) {
     var listItem = document.createElement("li");
     listItem.textContent = scoreObject.initials + ": " + scoreObject.score;
+    highScoresList.appendChild(ol); // append listItem to highScoresList
+    var tryAgainButton = document.getElementById("tryAgain");
+    tryAgainButton.addEventListener("click", function () {
+      window.location.href = "index.html";
+    });
   });
 };
 
