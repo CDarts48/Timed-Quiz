@@ -13,13 +13,14 @@ var quiz = document.getElementById("quiz");
 var currentQuestion = 0;
 var totalQuestions = 2;
 var initials = document.getElementById("initials");
+console.log(initials.innerHTML);
 var scoreObject = {
         initials,
         score: (isCorrect * count),
       };
 var highScoresList = JSON.parse(localStorage.getItem("score")) || [];
 // var highScoresarray = document.getElementById("highScores");
-var highScores = (initials.innerHTML, 'score');
+var highScores = ('initials', 'score');
 
 startButton.addEventListener("click", function () {
   begin.style.display = "none";
@@ -43,25 +44,25 @@ const questions = [
   {
     question: "How do you declare a JavaScript variable?",
     answers: [
-      { text: "kldshfasioefhnewionfw;", correct: false },
+      { text: "Yo type the word declare;", correct: false },
       {
         text: "In JavaScript, you can declare a variable using the var, let, or const;",
         correct: true,
       },
-      { text: "dsfklfjisadjfiewj;", correct: false },
-      { text: "dsjfadsijofdiosj", correct: false },
+      { text: "You create a if statement;", correct: false },
+      { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "Q2?",
+    question: "What does this button do in CSS *?",
     answers: [
-      { text: "kldshfasioefhnewionfw;", correct: false },
+      { text: "Sets items to local storage;", correct: false },
       {
-        text: "In JavaScript, you can declare a variable using the var, let, or const;",
+        text: "Selects all elements on a page;",
         correct: true,
       },
-      { text: "dsfklfjisadjfiewj;", correct: false },
-      { text: "dsjfadsijofdiosj", correct: false },
+      { text: "Looks pretty;", correct: false },
+      { text: "All of the above", correct: false },
     ],
   },
 ];

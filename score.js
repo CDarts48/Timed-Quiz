@@ -1,10 +1,8 @@
 window.onload = function () {
     var highScores = JSON.stringify(localStorage.getItem("highScores")) || [];
 var highScoresList = document.getElementById("score");
+var initials = document.getElementById("initials");
     highScoresList.innerHTML = "";
-console.log(highScores);
-console.log(highScoresList);
-console.log(score);
     highScores.push(scoreObject);
     localStorage.setItem("highScores", JSON.stringify(score));
 
