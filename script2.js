@@ -4,22 +4,26 @@ var count = 60;
 var interval;
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next");
+var nextButton = document.getElementById("next");
 let currentQuestionIndex = 5;
 let isCorrect = 0;
 let score = isCorrect + count;
-console.log(isCorrect);
-console.log(begin, startQuiz, count);
 var begin = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var currentQuestion = 0;
 var totalQuestions = 2;
-var highScoresList = JSON.parse(localStorage.getItem("highScore")) || [];
-var highScoresarray = document.getElementById("highScores");
-// var highScores = ('score');
-begin.addEventListener("click", function () {
+var initials = document.getElementById("initials");
+var scoreObject = {
+        initials,
+        score: (isCorrect * count),
+      };
+var highScoresList = JSON.parse(localStorage.getItem("score")) || [];
+// var highScoresarray = document.getElementById("highScores");
+var highScores = (initials.innerHTML, 'score');
+
+startButton.addEventListener("click", function () {
   begin.style.display = "none";
-  // quiz.style.display = 'block';
+//   quiz.style.display = 'block';
   quiz.removeAttribute("class");
   var interval = setInterval(function () {
     document.getElementById("count").innerHTML = count;
@@ -79,7 +83,7 @@ function showQuestion() {
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerHTML = answer.text;
-    button.classList.add("btn");
+    button.classList.add("button");
     answerButtons.appendChild(button);
     if (answer.correct) {
       button.dataset.correct = answer.correct;
@@ -88,6 +92,14 @@ function showQuestion() {
     button.addEventListener("click", selectAnswer);
   });
 }
+
+nextButton.addEventListener("click", () => {
+  timeLeft = count;
+  clearInterval();
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  }
+});
 
 function resetState() {
   nextButton.style.display = "none";
@@ -121,43 +133,31 @@ function showScore() {
   quiz.setAttribute("class", "hide");
   var scoreEl = document.getElementById("score-html");
   scoreEl.textContent = `Your score is ${score * count}!`;
-  document
-    .getElementById("score-form")
-    .addEventListener("submit", function (event) {
+    // .getElementById("score-form")
+    document.addEventListener("submit", function (event) {
       event.preventDefault();
-      var scoreList = [];
+    //   var initialsEL = document.getElementById("initials");
+    //   var score = isCorrect * count;
       console.log(timeLeft);
-      var initials = document.getElementById("initials").value;
-      var scoreObject = {
-        initials,
-        score: score * count,
-      };
       console.log(scoreObject);
       displayScore();
-      scoreList.push(scoreObject);
+    //   scoreList.push(scoreObject);
       localStorage.setItem("highScores", JSON.stringify(scoreObject));
       window.location.href = "score.html";
     });
+    console.log(scoreObject);
 
   // var (highScore = "score")
-  highScoresList.forEach(function (scoreObject) {
-    var listItem = document.createElement("li");
-    highScoresList.push(scoreObject);
-  });
+ 
 }
-
-var restartButton = document.getElementById("restart");
-restartButton.addEventListener("click", function () {
-  window.location.href = "index.html";
-});
 
 //   questionElement.appendChild(scoreButton);
 
 //   nextButton.innerHTML = "Play Again";
 //   nextButton.style.display = "block";
-
+console.log(score);
 function saveScore() {
-  localStorage.setItem("score");
+  localStorage.setItem("scoreObject");
 }
 function handleNextButton() {
   currentQuestionIndex++;
@@ -170,30 +170,8 @@ function handleNextButton() {
 
 function displayScore() {}
 
-window.onload = function () {
-  var highScoresList = document.getElementById("highScoresList");
-  var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-  highScores.sort((a, b) => b.score - a.score);
-  highScores = highScores.slice(0, 5);
 
-  highScores.forEach(function (scoreObject) {
-    var listItem = document.createElement("li");
-    listItem.textContent = scoreObject.initials + ": " + scoreObject.score;
-    highScoresList.appendChild(ol); // append listItem to highScoresList
-    var tryAgainButton = document.getElementById("tryAgain");
-    tryAgainButton.addEventListener("click", function () {
-      window.location.href = "index.html";
-    });
-  });
-};
 
-nextButton.addEventListener("click", () => {
-  timeLeft = count;
-  clearInterval();
-  if (currentQuestionIndex < questions.length) {
-    handleNextButton();
-  }
-});
 
 // var restart = document.getElementById("next");
 // var clickCount = 0;
