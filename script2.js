@@ -5,20 +5,16 @@ var interval;
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 var nextButton = document.getElementById("next");
-let currentQuestionIndex = 5;
-let isCorrect = 0;
-let score = isCorrect + count;
+var currentQuestionIndex = 5;
+var isCorrect = 0;
+var score = isCorrect + count;
 var begin = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var currentQuestion = 0;
 var totalQuestions = 2;
 var initials = document.getElementById("initials");
-console.log(initials.innerHTML);
-var scoreObject = {
-        initials,
-        score: (isCorrect * count),
-      };
 var highScoresList = JSON.parse(localStorage.getItem("score")) || [];
+
 // var highScoresarray = document.getElementById("highScores");
 var highScores = ('initials', 'score');
 
@@ -135,18 +131,24 @@ function showScore() {
   var scoreEl = document.getElementById("score-html");
   scoreEl.textContent = `Your score is ${score * count}!`;
     // .getElementById("score-form")
+    
     document.addEventListener("submit", function (event) {
       event.preventDefault();
+      var scoreObject = {
+        initials: initials.value,
+        score: (isCorrect * count),
+      };
     //   var initialsEL = document.getElementById("initials");
     //   var score = isCorrect * count;
-      console.log(timeLeft);
-      console.log(scoreObject);
-      displayScore();
+      // displayScore(score * count);
     //   scoreList.push(scoreObject);
       localStorage.setItem("highScores", JSON.stringify(scoreObject));
-      window.location.href = "score.html";
+      document.location.replace("score.html");
+      console.error(scoreObject);
     });
-    console.log(scoreObject);
+    console.log(timeLeft);
+    console.log(score);
+    
 
   // var (highScore = "score")
  
@@ -173,7 +175,7 @@ function displayScore() {}
 
 
 
-
+// not correct
 // var restart = document.getElementById("next");
 // var clickCount = 0;
 

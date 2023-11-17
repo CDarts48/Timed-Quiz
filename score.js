@@ -20,3 +20,13 @@ var initials = document.getElementById("initials");
         window.location.href = "index.html";
     });
 };
+
+//  check out using this 4loop to creat teh high scores for (var i = 0; i < data.length; i++) {
+//         var userName = document.createElement("h3");
+//         var userUrl = document.createElement("a");
+//         userName.textContent = data[i].login;
+//         userUrl.textContent = data[i].url;
+//         userContainer.append(userName);
+//         userContainer.append(userUrl);
+//       }
+//     });
