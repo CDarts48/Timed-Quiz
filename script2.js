@@ -15,15 +15,16 @@ var totalQuestions = 5;
 var initials = document.getElementById("initials");
 var highScoresList = JSON.parse(localStorage.getItem("score")) || [];
 
-var highScores = ("initials", "score");
+// var highScoresarray = document.getElementById("highScores");
+var highScores = ('initials', 'score');
 
 startButton.addEventListener("click", function () {
   begin.style.display = "none";
-  //   quiz.style.display = 'block';
+//   quiz.style.display = 'block';
   quiz.removeAttribute("class");
   var interval = setInterval(function () {
     document.getElementById("count").innerHTML = count;
-    if (count <= 0) {
+    if (currentQuestionIndex === totalQuestions || count <= 0) {
       clearInterval(interval);
       document.getElementById("count").textContent = "Time's up!";
       showScore();
@@ -39,78 +40,60 @@ const questions = [
   {
     question: "How do you declare a JavaScript variable?",
     answers: [
-      { text: "Yoy type the word declare", correct: false },
+      { text: "Yo type the word declare;", correct: false },
       {
-        text: "In JavaScript, you can declare a variable using the var, let, or const",
+        text: "In JavaScript, you can declare a variable using the var, let, or const;",
         correct: true,
       },
-      { text: "You create a if statement", correct: false },
+      { text: "You create a if statement;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What does this button * do in CSS?",
+    question: "What does this button do in CSS *?",
     answers: [
-      { text: "Sets items to local storage", correct: false },
+      { text: "Sets items to local storage;", correct: false },
       {
-        text: "Selects all elements on a page",
+        text: "Selects all elements on a page;",
         correct: true,
       },
-      { text: "Looks pretty", correct: false },
+      { text: "Looks pretty;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "How do you declare a variable in JavaScript?",
+    question: "What does this button do in CSS *?",
     answers: [
+      { text: "Sets items to local storage;", correct: false },
       {
-        text: "Variables can be declared in 4 ways. Automatically, Using var, let or const",
+        text: "Selects all elements on a page;",
         correct: true,
       },
-      {
-        text: "Selects all elements on a page",
-        correct: false,
-      },
-      {
-        text: "You use declare prior to designating the variable ",
-        correct: false,
-      },
+      { text: "Looks pretty;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What does the siblings selector do in Jquery?",
+    question: "What does this button do in CSS *?",
     answers: [
+      { text: "Sets items to local storage;", correct: false },
       {
-        text: "Get the siblings of each element in the set of matched elements, optionally filtered by a selector.",
+        text: "Selects all elements on a page;",
         correct: true,
       },
-      {
-        text: "Selects all elements on a page",
-        correct: false,
-      },
-      {
-        text: "Get the parent of each element in the current set of matched elements, optionally filtered by a selector.",
-        correct: false,
-      },
+      { text: "Looks pretty;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What is a JavaScript Array?",
+    question: "What does this button do in CSS *?",
     answers: [
+      { text: "Sets items to local storage;", correct: false },
       {
-        text: "It's a variable used to store big integer values that are too big to be represented by a normal JavaScript",
-        correct: false,
-      },
-      {
-        text: "An array is a special variable, which can hold more than one value",
+        text: "Selects all elements on a page;",
         correct: true,
       },
-      {
-        text: "It is used to store big integer values that are too big to be represented by a normal JavaScript",
-        correct: false,
-      },
+      { text: "Looks pretty;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
@@ -137,7 +120,7 @@ function showQuestion() {
     answerButtons.appendChild(button);
     if (answer.correct) {
       button.dataset.correct = answer.correct;
-      // button.dataset.correct = answer.correct;
+      button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
   });
@@ -183,26 +166,28 @@ function showScore() {
   quiz.setAttribute("class", "hide");
   var scoreEl = document.getElementById("score-html");
   scoreEl.textContent = `Your score is ${score * count}!`;
-  // .getElementById("score-form")
-
-  document.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var scoreObject = {
-      initials: initials.value,
-      score: score * count,
-    };
-    let scoreList = JSON.parse(localStorage.getItem("highScores")) || [];
+    // .getElementById("score-form")
+    
+    document.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var scoreObject = {
+        initials: initials.value,
+        score: score,
+      };
+      let scoreList = JSON.parse(localStorage.getItem("highScores")) || [];
     //   var initialsEL = document.getElementById("initials");
     //   var score = isCorrect * count;
-    // displayScore(score * count);
-    scoreList.push(scoreObject);
-    localStorage.setItem("highScores", JSON.stringify(scoreList));
-    document.location.replace("score.html");
-  });
-  console.log(timeLeft);
-  console.log(score);
+      // displayScore(score * count);
+      scoreList.push(scoreObject);
+      localStorage.setItem("highScores", JSON.stringify(scoreList));
+      document.location.replace("score.html");
+    });
+    console.log(timeLeft);
+    console.log(score);
+    
 
   // var (highScore = "score")
+ 
 }
 
 //   questionElement.appendChild(scoreButton);
@@ -223,6 +208,8 @@ function handleNextButton() {
 }
 
 function displayScore() {}
+
+
 
 // not correct
 // var restart = document.getElementById("next");
