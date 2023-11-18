@@ -15,12 +15,11 @@ var totalQuestions = 5;
 var initials = document.getElementById("initials");
 var highScoresList = JSON.parse(localStorage.getItem("score")) || [];
 
-// var highScoresarray = document.getElementById("highScores");
-var highScores = ('initials', 'score');
+var highScores = ("initials", "score");
 
 startButton.addEventListener("click", function () {
   begin.style.display = "none";
-//   quiz.style.display = 'block';
+  //   quiz.style.display = 'block';
   quiz.removeAttribute("class");
   var interval = setInterval(function () {
     document.getElementById("count").innerHTML = count;
@@ -166,28 +165,23 @@ function showScore() {
   quiz.setAttribute("class", "hide");
   var scoreEl = document.getElementById("score-html");
   scoreEl.textContent = `Your score is ${score * count}!`;
-    // .getElementById("score-form")
-    
-    document.addEventListener("submit", function (event) {
-      event.preventDefault();
-      var scoreObject = {
-        initials: initials.value,
-        score: score,
-      };
-      let scoreList = JSON.parse(localStorage.getItem("highScores")) || [];
-    //   var initialsEL = document.getElementById("initials");
-    //   var score = isCorrect * count;
-      // displayScore(score * count);
-      scoreList.push(scoreObject);
-      localStorage.setItem("highScores", JSON.stringify(scoreList));
-      document.location.replace("score.html");
-    });
-    console.log(timeLeft);
-    console.log(score);
-    
+  // .getElementById("score-form")
+
+  document.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var scoreObject = {
+      initials: initials.value,
+      score: score * count,
+    };
+    let scoreList = JSON.parse(localStorage.getItem("highScores")) || [];
+    scoreList.push(scoreObject);
+    localStorage.setItem("highScores", JSON.stringify(scoreList));
+    document.location.replace("score.html");
+  });
+  console.log(timeLeft);
+  console.log(score);
 
   // var (highScore = "score")
- 
 }
 
 //   questionElement.appendChild(scoreButton);
@@ -208,8 +202,6 @@ function handleNextButton() {
 }
 
 function displayScore() {}
-
-
 
 // not correct
 // var restart = document.getElementById("next");
