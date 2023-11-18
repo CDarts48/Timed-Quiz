@@ -195,7 +195,7 @@ function showScore() {
     //   var initialsEL = document.getElementById("initials");
     //   var score = isCorrect * count;
     // displayScore(score * count);
-    // scoreList.push(scoreObject);
+    scoreList.push(scoreObject);
     localStorage.setItem("highScores", JSON.stringify(scoreList));
     document.location.replace("score.html");
   });
