@@ -14,12 +14,12 @@
     </section>
     <section id="start" class ="click"></section>
     <section
-    <button id="restart" style="display: flex">Try again</button>
+    <button id="restart" class = "display: none;">Try again</button>
   </body>
   <script>
     var highScores = JSON.parse(localStorage.getItem("highScores"));
   </script>
-  <script src="script2.js"></script>
+  <script src= "score.js"></script>
   <script>
     var restartButton = document.getElementById("restart");
     restartButton.addEventListener("click", function () {
