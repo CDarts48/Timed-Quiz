@@ -13,9 +13,9 @@ var quiz = document.getElementById("quiz");
 var currentQuestion = 0;
 var totalQuestions = 5;
 var initials = document.getElementById("initials");
-var highScoresList = JSON.parse(localStorage.getItem("score")) || [];
+var highScoresList = JSON.parse(localStorage.getItem("scoreList")) || [];
 
-var highScores = ("initials", "score");
+// var highScores = ("initials", "score"); redundant code the top scores is logging twice this was an attempt to fix it
 
 startButton.addEventListener("click", function () {
   begin.style.display = "none";
@@ -39,60 +39,78 @@ const questions = [
   {
     question: "How do you declare a JavaScript variable?",
     answers: [
-      { text: "Yo type the word declare;", correct: false },
+      { text: "You type the word declare", correct: false },
       {
-        text: "In JavaScript, you can declare a variable using the var, let, or const;",
+        text: "You can declare a variable using the var, let, or const",
         correct: true,
       },
-      { text: "You create a if statement;", correct: false },
+      { text: "You create a if statement", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What does this button do in CSS *?",
+    question: "What does this button do in CSS, *?",
     answers: [
-      { text: "Sets items to local storage;", correct: false },
+      { text: "Sets items to local storage", correct: false },
       {
-        text: "Selects all elements on a page;",
+        text: "Selects all elements on a page",
         correct: true,
       },
-      { text: "Looks pretty;", correct: false },
+      { text: "Looks pretty", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What does this button do in CSS *?",
+    question: "What is the difference between let, var and const?",
     answers: [
-      { text: "Sets items to local storage;", correct: false },
       {
-        text: "Selects all elements on a page;",
+        text: "let and var are Jquery refrences and const refres to a css display",
+        correct: false,
+      },
+      {
+        text: "They select all elements on a page;",
+        correct: false,
+      },
+      {
+        text: "Var can be reassigned and redeclared; let can be reassigned but not redeclared; const can neither be reassigned nor redeclared.",
         correct: true,
       },
-      { text: "Looks pretty;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What does this button do in CSS *?",
+    question: "The Starting Point, The Step and The condition refer to what?",
     answers: [
-      { text: "Sets items to local storage;", correct: false },
       {
-        text: "Selects all elements on a page;",
+        text: "They are three distinct regions that make up a do while loop",
+        correct: false,
+      },
+      {
+        text: "They are three distinct regions that make up a while loop",
+        correct: false,
+      },
+      {
+        text: "They are three distinct regions that make up a for loop",
         correct: true,
       },
-      { text: "Looks pretty;", correct: false },
       { text: "All of the above", correct: false },
     ],
   },
   {
-    question: "What does this button do in CSS *?",
+    question: "What are comments?",
     answers: [
-      { text: "Sets items to local storage;", correct: false },
       {
-        text: "Selects all elements on a page;",
+        text: "Comments are thins we write as part of our code in order to communicate with other humans",
         correct: true,
       },
-      { text: "Looks pretty;", correct: false },
+      {
+        text: "It's the technical term for a computer error",
+        correct: false,
+      },
+      {
+        text: "It's how you push your code to the main stream in Gitgoing.io",
+        correct: false,
+      },
       { text: "All of the above", correct: false },
     ],
   },
@@ -119,7 +137,7 @@ function showQuestion() {
     answerButtons.appendChild(button);
     if (answer.correct) {
       button.dataset.correct = answer.correct;
-      button.dataset.correct = answer.correct;
+      // button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
   });
