@@ -196,30 +196,15 @@ function showScore() {
     localStorage.setItem("highScores", JSON.stringify(scoreList));
     document.location.replace("score.html");
   });
-  console.log(timeLeft);
-  console.log(score);
-
-  // var (highScore = "score")
-}
-
-//   questionElement.appendChild(scoreButton);
-
-//   nextButton.innerHTML = "Play Again";
-//   nextButton.style.display = "block";
-console.log(score);
-function saveScore() {
-  localStorage.setItem("scoreObject");
 }
 function handleNextButton() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
-  } else {
-    showScore();
   }
 }
 
-function displayScore() {}
+// function displayScore() {}
 
 // not correct
 // var restart = document.getElementById("next");
